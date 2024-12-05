@@ -38,7 +38,7 @@ void AfficheurGraphique::afficher(const Grille& grille, int iteration) {
 
     for (int y = 0; y < grille.getHauteur(); ++y) {
         for (int x = 0; x < grille.getLargeur(); ++x) {
-            cellule.setFillColor(grille.estVivante(x, y) ? sf::Color::Green : sf::Color::Black);
+            cellule.setFillColor(grille.estVivante(x, y) ? sf::Color::Magenta : sf::Color::Black);
             cellule.setPosition(x * tailleCellule, y * tailleCellule);
             window.draw(cellule);
         }

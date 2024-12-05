@@ -1,9 +1,9 @@
 #ifndef JEUDELAVIE_H
 #define JEUDELAVIE_H
 
-#include "Grille.h"
-#include "Afficheur.h"
-#include "AfficheurGraphique.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS/Grille.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\IHM/Afficheur.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\IHM/AfficheurGraphique.h"
 
 class JeuDeLaVie {
 private:

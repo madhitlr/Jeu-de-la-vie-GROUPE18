@@ -1,4 +1,4 @@
-#include "Cellule.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS/Cellule.h"
 
 Cellule::Cellule(bool etat) : vivante(etat) {}
 Cellule::~Cellule() {}

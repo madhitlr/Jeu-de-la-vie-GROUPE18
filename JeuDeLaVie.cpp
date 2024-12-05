@@ -1,8 +1,8 @@
 #include "SERVICE/JeuDeLaVie.h"
-#include <SFML/System.hpp>
 
 JeuDeLaVie::JeuDeLaVie(int largeur, int hauteur, int maxIterations)
-    : grille(largeur, hauteur), maxIterations(maxIterations) {}
+    : grille(largeur, hauteur), maxIterations(maxIterations) {
+}
 
 void JeuDeLaVie::chargerFichierConfiguration(const std::string& cheminFichier) {
     grille.initialiserDepuisFichier(cheminFichier);
@@ -20,7 +20,7 @@ void JeuDeLaVie::lancerSimulationGraphique(AfficheurGraphique& afficheur) {
     int iteration = 0;
 
     sf::Clock clock;
-    float delay = 0.2f;
+    float delay = 0.2f; // délai en secondes entre les itérations
 
     while (window.isOpen()) {
         sf::Event event;
@@ -38,7 +38,7 @@ void JeuDeLaVie::lancerSimulationGraphique(AfficheurGraphique& afficheur) {
             iteration++;
 
             if (iteration >= maxIterations) {
-                // window.close(); // Optionnel, si vous voulez arrêter après maxIterations
+                window.close();
             }
         }
     }

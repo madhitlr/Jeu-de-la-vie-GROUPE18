@@ -21,36 +21,42 @@
     <ClCompile Include="main.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Cellule.cpp">
-      <Filter>COMPOSANTS</Filter>
-    </ClCompile>
-    <ClCompile Include="Grille.cpp">
-      <Filter>COMPOSANTS</Filter>
-    </ClCompile>
-    <ClCompile Include="Afficheur.cpp">
+    <ClCompile Include="AfficheurConsole.cpp">
       <Filter>IHM</Filter>
     </ClCompile>
-    <ClCompile Include="JeuDeLaVie.cpp">
+    <ClCompile Include="AfficheurGraphique.cpp">
+      <Filter>IHM</Filter>
+    </ClCompile>
+    <ClCompile Include="COMPOSANTS\Cellule.cpp">
+      <Filter>COMPOSANTS</Filter>
+    </ClCompile>
+    <ClCompile Include="SERVICE\GestionnaireDeFichier.cpp">
       <Filter>SERVICE</Filter>
     </ClCompile>
-    <ClCompile Include="GestionnaireDeFichier.cpp">
+    <ClCompile Include="COMPOSANTS\Grille.cpp">
+      <Filter>COMPOSANTS</Filter>
+    </ClCompile>
+    <ClCompile Include="SERVICE\JeuDeLaVie.cpp">
       <Filter>SERVICE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cellule.h">
-      <Filter>COMPOSANTS</Filter>
-    </ClInclude>
-    <ClInclude Include="Grille.h">
-      <Filter>COMPOSANTS</Filter>
-    </ClInclude>
-    <ClInclude Include="Afficheur.h">
+    <ClInclude Include="AfficheurConsole.h">
       <Filter>IHM</Filter>
     </ClInclude>
-    <ClInclude Include="JeuDeLaVie.h">
-      <Filter>SERVICE</Filter>
+    <ClInclude Include="AfficheurGraphique.h">
+      <Filter>IHM</Filter>
     </ClInclude>
     <ClInclude Include="GestionnaireDeFichier.h">
+      <Filter>SERVICE</Filter>
+    </ClInclude>
+    <ClInclude Include="COMPOSANTS\Grille.h">
+      <Filter>COMPOSANTS</Filter>
+    </ClInclude>
+    <ClInclude Include="IHM\Afficheur.h">
+      <Filter>IHM</Filter>
+    </ClInclude>
+    <ClInclude Include="SERVICE\JeuDeLaVie.h">
       <Filter>SERVICE</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,7 +1,7 @@
 #ifndef GRILLE_H
 #define GRILLE_H
 
-#include "Cellule.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS/Cellule.h"
 #include <vector>
 #include <string>
 #include <memory>

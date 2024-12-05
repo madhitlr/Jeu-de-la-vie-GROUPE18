@@ -1,8 +1,9 @@
-#ifndef JEUDALAVIE_H
-#define JEUDALAVIE_H
+#ifndef JEUDELAVIE_H
+#define JEUDELAVIE_H
 
 #include "COMPOSANTS/Grille.h"
 #include "IHM/Afficheur.h"
+#include "IHM/AfficheurGraphique.h"
 
 class JeuDeLaVie {
 private:
@@ -16,4 +17,4 @@ public:
     void lancerSimulationGraphique(AfficheurGraphique& afficheur);
 };
 
-#endif
+#endif // JEUDELAVIE_H

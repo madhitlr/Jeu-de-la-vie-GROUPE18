@@ -1,7 +1,7 @@
 #ifndef AFFICHEUR_H
 #define AFFICHEUR_H
 
-#include "Grille.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS/Grille.h"
 
 class Afficheur {
 public:
