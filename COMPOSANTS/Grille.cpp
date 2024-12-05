@@ -4,9 +4,9 @@
 
 Grille::Grille(int largeur, int hauteur) : largeur(largeur), hauteur(hauteur) {
     cellules.resize(hauteur, std::vector<std::shared_ptr<Cellule>>(largeur));
-    for (int i = 0; i < hauteur; ++i) {
-        for (int j = 0; j < largeur; ++j) {
-            cellules[i][j] = std::make_shared<CelluleStandard>(false);
+    for (int y = 0; y < hauteur; ++y) {
+        for (int x = 0; x < largeur; ++x) {
+            cellules[y][x] = std::make_shared<CelluleStandard>(false);
         }
     }
 }
@@ -19,33 +19,47 @@ void Grille::initialiserDepuisFichier(const std::string& cheminFichier) {
     }
 
     fichier >> hauteur >> largeur;
+    cellules.clear();
     cellules.resize(hauteur, std::vector<std::shared_ptr<Cellule>>(largeur));
-    for (int i = 0; i < hauteur; ++i) {
-        for (int j = 0; j < largeur; ++j) {
+
+    for (int y = 0; y < hauteur; ++y) {
+        for (int x = 0; x < largeur; ++x) {
             int etat;
             fichier >> etat;
-            cellules[i][j] = std::make_shared<CelluleStandard>(etat == 1);
+            cellules[y][x] = std::make_shared<CelluleStandard>(etat == 1);
         }
     }
 }
 
 void Grille::actualiserEtat() {
-    auto ancienneGrille = cellules;
+    // Créer une copie profonde de la grille actuelle
+    std::vector<std::vector<std::shared_ptr<Cellule>>> ancienneGrille(hauteur, std::vector<std::shared_ptr<Cellule>>(largeur));
 
-    for (int i = 0; i < hauteur; ++i) {
-        for (int j = 0; j < largeur; ++j) {
+    for (int y = 0; y < hauteur; ++y) {
+        for (int x = 0; x < largeur; ++x) {
+            ancienneGrille[y][x] = cellules[y][x]->clone();
+        }
+    }
+
+    // Mise à jour de l'état des cellules
+    for (int y = 0; y < hauteur; ++y) {
+        for (int x = 0; x < largeur; ++x) {
             int vivantes = 0;
-            for (int dx = -1; dx <= 1; ++dx) {
-                for (int dy = -1; dy <= 1; ++dy) {
-                    if (dx == 0 && dy == 0) continue;
-                    int nx = Cellule::indiceTorique(j + dx, largeur);
-                    int ny = Cellule::indiceTorique(i + dy, hauteur);
-                    if (ancienneGrille[ny][nx]->estVivante()) {
-                        ++vivantes;
-                    }
+
+            // Compter les voisins vivants dans l'ancienne grille
+            for (const auto& voisin : getVoisins(x, y, ancienneGrille)) {
+                if (voisin->estVivante()) {
+                    ++vivantes;
                 }
             }
-            cellules[i][j]->definirEtat((ancienneGrille[i][j]->estVivante() && (vivantes == 2 || vivantes == 3)) || (!ancienneGrille[i][j]->estVivante() && vivantes == 3));
+
+            // Appliquer les règles de Conway
+            if (ancienneGrille[y][x]->estVivante()) {
+                cellules[y][x]->definirEtat(vivantes == 2 || vivantes == 3);
+            }
+            else {
+                cellules[y][x]->definirEtat(vivantes == 3);
+            }
         }
     }
 }
@@ -53,11 +67,29 @@ void Grille::actualiserEtat() {
 int Grille::getLargeur() const { return largeur; }
 int Grille::getHauteur() const { return hauteur; }
 bool Grille::estVivante(int x, int y) const { return cellules[y][x]->estVivante(); }
+
 void Grille::afficherConsole() const {
-    for (const auto& ligne : cellules) {
-        for (const auto& cellule : ligne) {
-            std::cout << (cellule->estVivante() ? "1 " : "0 ");
+    for (int y = 0; y < hauteur; ++y) {
+        for (int x = 0; x < largeur; ++x) {
+            std::cout << (cellules[y][x]->estVivante() ? "1 " : "0 ");
         }
         std::cout << "\n";
     }
+}
+
+std::vector<std::shared_ptr<Cellule>> Grille::getVoisins(int x, int y, const std::vector<std::vector<std::shared_ptr<Cellule>>>& grille) const {
+    std::vector<std::shared_ptr<Cellule>> voisins;
+
+    for (int dy = -1; dy <= 1; ++dy) {
+        for (int dx = -1; dx <= 1; ++dx) {
+            if (dx == 0 && dy == 0) continue;
+
+            int nx = Cellule::indiceTorique(x + dx, largeur);
+            int ny = Cellule::indiceTorique(y + dy, hauteur);
+
+            voisins.push_back(grille[ny][nx]);
+        }
+    }
+
+    return voisins;
 }

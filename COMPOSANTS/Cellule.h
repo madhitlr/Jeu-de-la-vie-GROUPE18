@@ -13,6 +13,7 @@ public:
 
     bool estVivante() const;
     void definirEtat(bool etat);
+
     virtual std::shared_ptr<Cellule> clone() const = 0;
 
     static int indiceTorique(int indice, int taille);
@@ -24,4 +25,5 @@ public:
     std::shared_ptr<Cellule> clone() const override;
 };
 
-#endif
+#endif // CELLULE_H
+

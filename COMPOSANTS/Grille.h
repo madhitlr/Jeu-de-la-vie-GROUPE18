@@ -3,8 +3,9 @@
 
 #include "Cellule.h"
 #include <vector>
-#include <memory>
 #include <string>
+#include <memory>
+#include <iostream>
 
 class Grille {
 private:
@@ -15,10 +16,14 @@ public:
     Grille(int largeur, int hauteur);
     void initialiserDepuisFichier(const std::string& cheminFichier);
     void actualiserEtat();
+
     int getLargeur() const;
     int getHauteur() const;
     bool estVivante(int x, int y) const;
     void afficherConsole() const;
+
+private:
+    std::vector<std::shared_ptr<Cellule>> getVoisins(int x, int y, const std::vector<std::vector<std::shared_ptr<Cellule>>>& grille) const;
 };
 
-#endif
+#endif // GRILLE_H

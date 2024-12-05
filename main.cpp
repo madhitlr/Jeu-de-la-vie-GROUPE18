@@ -1,11 +1,12 @@
 #include "SERVICE/JeuDeLaVie.h"
-#include "IHM/Afficheur.h"
+#include "IHM/AfficheurConsole.h"
+#include "IHM/AfficheurGraphique.h"
 #include "SERVICE/GestionnaireDeFichier.h"
 #include <iostream>
 
 int main() {
     int largeur = 20, hauteur = 20, maxIterations;
-    std::string cheminFichier = "etat_initial.txt";
+    std::string cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\etat_initial.txt";
 
     std::cout << "Entrez le nombre d'itérations : ";
     std::cin >> maxIterations;

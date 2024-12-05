@@ -1,4 +1,5 @@
 #include "GestionnaireDeFichier.h"
+#include <filesystem>
 #include <fstream>
 #include <iostream>
 
