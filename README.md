@@ -74,7 +74,7 @@ L'architecture du projet est divisée en trois couches principales, permettant u
 
 Voici une représentation UML des classes et de leurs relations :
 
-*(Ajoutez ici une image ou une description détaillée du diagramme UML)*
+![Diagramme UML](https://github.com/user-attachments/assets/019bad9f-dab8-4a34-bdc8-ebcf25db3f66)
 
 ## 5. Fonctionnalités
 
@@ -89,6 +89,7 @@ La simulation suit les règles de Conway. Chaque itération met à jour l'état 
 ### Mode interactif
 
 #### Mode Graphique
+
 - **Description** :
   - Visualisation en temps réel de l'évolution de la grille.
   - Interactions utilisateur via la souris pour ajouter, retirer ou modifier des cellules pendant la simulation.
@@ -98,6 +99,7 @@ La simulation suit les règles de Conway. Chaque itération met à jour l'état 
   - Chaque cellule est représentée par un rectangle coloré (vert pour vivante, noir pour morte).
 
 #### Mode Console
+
 - **Description** :
   - Simulation basée sur des fichiers texte décrivant l'état initial de la grille.
   - Affichage des états successifs dans le terminal sous forme de matrice.
@@ -109,6 +111,7 @@ La simulation suit les règles de Conway. Chaque itération met à jour l'état 
 ### Sauvegarde et chargement
 
 #### Sauvegarde automatique
+
 - **Description** :
   - Chaque état de la grille est sauvegardé à la fin d'une itération, permettant une reprise ou une analyse ultérieure.
   - Les fichiers sont nommés de manière incrémentale pour suivre l'évolution de la simulation.
@@ -116,6 +119,7 @@ La simulation suit les règles de Conway. Chaque itération met à jour l'état 
   - Utilisation de la classe `GestionnaireDeFichiers` pour écrire les configurations dans un répertoire dédié.
 
 #### Chargement de configurations personnalisées
+
 - **Description** :
   - L'utilisateur peut définir un fichier texte contenant une grille personnalisée avec des cellules initiales vivantes ou mortes.
   - Cette fonctionnalité permet de tester des scénarios spécifiques ou d'explorer des motifs prédéfinis.
@@ -125,23 +129,46 @@ La simulation suit les règles de Conway. Chaque itération met à jour l'état 
 
 ## 6. Extensions Implémentées
 
+### Simplification de la classe Cellule
+
+#### Suppression de la classe `CelluleTorpique`
+La classe `CelluleTorpique`, qui était utilisée pour gérer les spécificités des cellules dans une grille torique, a été supprimée. Cette décision a été motivée par le besoin de simplifier l'architecture et d'intégrer directement la logique torique dans la classe principale `Cellule` et dans la gestion des voisins de la classe `Grille`.
+
+#### Intégration des fonctionnalités dans `Cellule`
+Les fonctionnalités nécessaires à la gestion des cellules dans une grille torique (comme le calcul des voisins) ont été intégrées dans la classe `Grille`, rendant la classe `Cellule` générique et adaptable à tous les types de grilles.
+
+### Suppression de la classe `ConfigurationSimulation`
+La classe `ConfigurationSimulation`, qui était spécifiquement utilisée pour les cellules toriques, a également été retirée. Avec la simplification apportée à la gestion des cellules et des grilles, cette classe est devenue redondante.
+
+#### Impact de cette suppression
+- La configuration initiale de la grille est désormais directement gérée par la classe `Grille` via des fichiers de configuration ou des paramètres passés au programme.
+- Cela permet de réduire le nombre de dépendances entre les classes et de rendre le code plus lisible et plus facile à maintenir.
+
+Ces modifications reflètent une démarche de simplification de l'architecture, visant à réduire la complexité inutile tout en conservant les fonctionnalités clés nécessaires à la simulation.
+
 ### Grille Torique
+
 L'extension de la grille torique ajoute une fonctionnalité clé au projet en supprimant les limites traditionnelles de la grille rectangulaire.
 
 #### Description
+
 Dans une grille classique, les cellules situées aux bords n'ont pas de voisins de l'autre côté. Cependant, dans une grille torique :
+
 - **Les bords gauche et droit de la grille sont connectés** : Une cellule située à l'extrémité gauche considère les cellules de l'extrémité droite comme ses voisines.
 - **Les bords supérieur et inférieur sont également connectés** : Une cellule en haut de la grille peut interagir avec les cellules situées tout en bas.
 
 Ce mécanisme permet d'observer des comportements nouveaux et dynamiques :
+
 1. **Propagation infinie des motifs** : Les motifs qui atteignent un bord continuent de l'autre côté de la grille.
 2. **Équilibre naturel des motifs** : Les motifs ne sont pas arrêtés par des "murs invisibles", ce qui donne lieu à des interactions plus naturelles.
 
 #### Avantages
+
 - **Amélioration des simulations** : Permet de modéliser des environnements sans frontières, tels que les systèmes planétaires ou biologiques.
 - **Complexité accrue** : Enrichit les possibilités de configurations et de motifs observables.
 
 #### Implémentation Technique
+
 - L'algorithme calcule les voisins de chaque cellule en utilisant des **opérations modulo** sur les coordonnées de la grille :
   ```cpp
   int voisinX = (x + décalageX + largeur) % largeur;
@@ -223,6 +250,7 @@ Le projet "Jeu de la Vie" démontre comment des règles simples peuvent conduire
 - Une interface utilisateur plus avancée.
 
 Ce travail constitue une base solide pour explorer des concepts avancés en programmation et simulation.
+
 
 
 
