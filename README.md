@@ -1,56 +1,63 @@
-# Projet : Le Jeu de la Vie
+# 🌸 Projet : Le Jeu de la Vie 🌸
 
 ## 📚 Table des matières
 
-1. [Introduction](#introduction)
-2. [Règles du Jeu de la Vie](#règles-du-jeu-de-la-vie)
-3. [Architecture du projet](#architecture-du-projet)
-4. [Diagramme UML](#diagramme-uml)
-5. [Fonctionnalités](#fonctionnalités)
-6. [Extensions Implémentées](#extensions-implémentées)
-7. [Prérequis Techniques](#prérequis-techniques)
-8. [Installation et Exécution](#installation-et-exécution)
-9. [Utilisation](#utilisation)
-10. [Objectifs Pédagogiques](#objectifs-pédagogiques)
-11. [Conclusion](#conclusion)
+1. [✨ Introduction](#introduction)
+2. [📜 Règles du Jeu de la Vie](#règles-du-jeu-de-la-vie)
+3. [🏗️ Architecture du projet](#architecture-du-projet)
+4. [📊 Diagramme UML](#diagramme-uml)
+5. [🎮 Fonctionnalités](#fonctionnalités)
+6. [🔧 Extensions Implémentées](#extensions-implémentées)
+7. [📋 Prérequis Techniques](#prérequis-techniques)
+8. [💻 Installation et Exécution](#installation-et-exécution)
+9. [🕹️ Utilisation](#utilisation)
+10. [🧪 Tests Unitaires](#tests-unitaires)
+11. [🎓 Objectifs Pédagogiques](#objectifs-pédagogiques)
+12. [🌟 Conclusion](#conclusion)
 
-## 1. Introduction
+---
 
-Le **Jeu de la Vie de Conway** est un automate cellulaire qui illustre des principes mathématiques et informatiques fascinants. Ce projet implémente cette simulation en utilisant les concepts de la **programmation orientée objet (POO)** en C++.
+## 1. ✨ Introduction
 
-Deux modes d'exécution sont disponibles :
+Le **Jeu de la Vie de Conway** est un automate cellulaire fascinant qui illustre comment des règles simples peuvent produire des comportements complexes. Créé en 1970, il s'agit d'un modèle en grille où chaque cellule, vivante ou morte, évolue selon des règles précises basées sur ses voisins. Ce jeu est devenu un outil pédagogique et scientifique majeur pour explorer des concepts liés à la biologie, aux mathématiques et à l'informatique.
 
-- Un mode graphique réalisé avec **SFML** pour une visualisation interactive.
-- Un mode console permettant une gestion plus légère et scriptable.
+Dans ce projet, nous avons recréé cette simulation en utilisant les principes de la **programmation orientée objet (POO)** en C++. Avec une architecture modulaire et robuste, nous avons intégré deux modes d'exécution :
 
-Ce projet a pour but d'intégrer des principes logiciels robustes, une structure modulaire, et d'explorer des extensions avancées du concept original.
+- 🖼️ **Mode graphique** : Offrant une visualisation interactive avec la bibliothèque **SFML**.
+- 🖥️ **Mode console** : Fournissant une approche légère et textuelle pour simuler les états successifs.
 
-## 2. Règles du Jeu de la Vie
+Ce projet va au-delà de la simple reproduction du concept en explorant des extensions avancées comme la grille torique et l'ajout de motifs prédéfinis. En combinant rigueur technique et créativité, cette simulation est une invitation à découvrir les merveilles des systèmes dynamiques.
+
+---
+
+## 2. 📜 Règles du Jeu de la Vie
 
 Le **Jeu de la Vie** repose sur les règles suivantes :
 
-1. **Naissance** : Une cellule morte devient vivante si elle est entourée de **trois cellules vivantes**.
-2. **Survie** : Une cellule vivante reste vivante si elle est entourée de **deux ou trois cellules vivantes**.
-3. **Mort** : Dans tous les autres cas, une cellule meurt (par sous-population ou surpopulation).
+1. 🌱 **Naissance** : Une cellule morte devient vivante si elle est entourée de **trois cellules vivantes**.
+2. 💪 **Survie** : Une cellule vivante reste vivante si elle est entourée de **deux ou trois cellules vivantes**.
+3. ☠️ **Mort** : Dans tous les autres cas, une cellule meurt (par sous-population ou surpopulation).
 
 La simulation se déroule sur une grille bidimensionnelle, où chaque cellule évolue en fonction de son état actuel et de celui de ses voisins immédiats.
 
-### Importance des règles
+### 🌌 Importance des règles
 
 Ces règles simples produisent des motifs complexes, permettant de simuler des comportements biologiques, des automates et même des systèmes chaotiques.
 
-## 3. Architecture du projet
+---
+
+## 3. 🏗️ Architecture du projet
 
 L'architecture du projet est divisée en trois couches principales, permettant une organisation modulaire et flexible :
 
-### Couche Composants
+### 🧩 Couche Composants
 
 - **Responsabilité** : Gère les éléments fondamentaux du jeu, notamment la cellule et la grille.
 - **Classes principales** :
   - `Cellule` : Représente une cellule vivante ou morte, avec des méthodes pour gérer son état.
   - `Grille` : Modélise une matrice de cellules, applique les règles du jeu, et gère la logique de transition des états.
 
-### Couche Service
+### ⚙️ Couche Service
 
 - **Responsabilité** : Coordonne la logique centrale de l'application.
 - **Fonctions clés** :
@@ -60,7 +67,7 @@ L'architecture du projet est divisée en trois couches principales, permettant u
   - `GestionnaireDeFichiers` : Permet de lire et écrire les configurations et les états de la grille.
   - `JeuDeLaVie` : Coordonne l'évolution du jeu en utilisant la grille et les services associés.
 
-### Couche IHM
+### 🎨 Couche IHM
 
 - **Responsabilité** : Interagit avec l'utilisateur via des interfaces graphiques ou en console.
 - **Modes** :
@@ -70,187 +77,126 @@ L'architecture du projet est divisée en trois couches principales, permettant u
   - `AfficheurConsole` : Gère l'affichage des états dans le terminal.
   - `AfficheurGraphique` : Implémente une visualisation interactive avec SFML.
 
-## 4. Diagramme UML
+---
 
-Voici une représentation UML des classes et de leurs relations :
+## 4. 📊 Évolution du Diagramme de Classe du Projet
+![image](https://github.com/user-attachments/assets/ab7979ff-d390-49da-83ae-9326ce62ed80)
 
-![Diagramme UML](https://github.com/user-attachments/assets/019bad9f-dab8-4a34-bdc8-ebcf25db3f66)
+Dans l’ancien diagramme, la gestion des cellules toriques était assurée par une classe dérivée spécifique, `CelluleTorique`. Cependant, cette approche rendait la structure plus complexe et introduisait des redondances inutiles. Dans le nouveau diagramme, le comportement torique a été intégré directement dans la classe de base `Cellule`. Ainsi, toutes les cellules adoptent un comportement torique par défaut. Cette simplification permet de réduire les responsabilités redondantes et de faciliter la gestion de la logique du jeu.
 
-## 5. Fonctionnalités
+La structure des couches a également été repensée pour offrir une architecture plus claire et modulaire.
 
-### Simulation classique du Jeu de la Vie
+---
 
-La simulation suit les règles de Conway. Chaque itération met à jour l'état de toutes les cellules en parallèle, en calculant les transitions en fonction des voisins immédiats. Les cellules mortes ou vivantes évoluent en fonction des trois règles fondamentales, permettant d'observer des motifs dynamiques comme :
+## 🎬 Aperçu du Jeu de la Vie
 
-- **Oscillateurs** : Motifs qui reviennent à leur état initial après un nombre fixe d'itérations.
-- **Vaisseaux** : Motifs mobiles qui se déplacent dans la grille.
-- **Motifs statiques** : Configurations qui restent inchangées au fil des itérations.
+Voici un exemple visuel montrant une simulation dynamique du **Jeu de la Vie** :
 
-### Mode interactif
+<div align="center">
+  <img src="https://media.giphy.com/media/d7SnByEMkrdeoVQ2lT/giphy.gif" alt="Aperçu du Jeu de la Vie" />
+</div>
 
-#### Mode Graphique
 
-- **Description** :
-  - Visualisation en temps réel de l'évolution de la grille.
-  - Interactions utilisateur via la souris pour ajouter, retirer ou modifier des cellules pendant la simulation.
-  - Contrôle de la vitesse d'exécution avec des commandes interactives.
-- **Implémentation** :
-  - Utilisation de la bibliothèque **SFML** pour dessiner la grille et gérer les événements utilisateur.
-  - Chaque cellule est représentée par un rectangle coloré (vert pour vivante, noir pour morte).
+## 5. 🎮 Fonctionnalités
 
-#### Mode Console
+- 🌀 Simulation classique du Jeu de la Vie avec application des règles de Conway.
+- 🌟 Mode graphique interactif avec la bibliothèque SFML.
+- 🖥️ Mode console permettant une gestion légère des simulations.
+- 💾 Sauvegarde et chargement des grilles à partir de fichiers texte.
 
-- **Description** :
-  - Simulation basée sur des fichiers texte décrivant l'état initial de la grille.
-  - Affichage des états successifs dans le terminal sous forme de matrice.
-  - Résultats sauvegardés automatiquement dans des fichiers distincts pour chaque itération.
-- **Implémentation** :
-  - Lecture et écriture des configurations dans des fichiers structurés.
-  - Affichage textuel optimisé pour des grilles de taille variable.
+---
 
-### Sauvegarde et chargement
+## 6. 🔧 Extensions Implémentées
 
-#### Sauvegarde automatique
+**🏗️ Placement de constructions pré-programmées sur la grille**
 
-- **Description** :
-  - Chaque état de la grille est sauvegardé à la fin d'une itération, permettant une reprise ou une analyse ultérieure.
-  - Les fichiers sont nommés de manière incrémentale pour suivre l'évolution de la simulation.
-- **Implémentation** :
-  - Utilisation de la classe `GestionnaireDeFichiers` pour écrire les configurations dans un répertoire dédié.
+L’utilisateur peut sélectionner et insérer des motifs prédéfinis directement dans la grille pour démarrer la simulation avec des configurations intéressantes. Ces motifs incluent des oscillateurs, des vaisseaux et des structures statiques. Cette fonctionnalité est idéale pour explorer des scénarios complexes sans configurer manuellement chaque cellule, ce qui rend l’expérimentation plus rapide et plus accessible.
 
-#### Chargement de configurations personnalisées
+🎹 Intégration de nouveaux motifs via le clavier
 
-- **Description** :
-  - L'utilisateur peut définir un fichier texte contenant une grille personnalisée avec des cellules initiales vivantes ou mortes.
-  - Cette fonctionnalité permet de tester des scénarios spécifiques ou d'explorer des motifs prédéfinis.
-- **Implémentation** :
-  - Lecture des fichiers ligne par ligne pour construire une grille valide.
-  - Gestion des erreurs de format pour garantir une configuration cohérente.
+Pendant l’exécution de la simulation, l’utilisateur peut interagir avec la grille en ajoutant de nouveaux motifs à l’aide des touches du clavier. Cela enrichit l’expérience interactive et permet de tester l’impact de nouveaux éléments en temps réel.
 
-## 6. Extensions Implémentées
+### 🔄 Grille Torique
 
-### Simplification de la classe Cellule
+La gestion torique connecte les bords de la grille pour permettre des motifs continus qui traversent les limites, offrant une expérience de simulation fluide et naturelle.
 
-#### Suppression de la classe `CelluleTorpique`
-La classe `CelluleTorpique`, qui était utilisée pour gérer les spécificités des cellules dans une grille torique, a été supprimée. Cette décision a été motivée par le besoin de simplifier l'architecture et d'intégrer directement la logique torique dans la classe principale `Cellule` et dans la gestion des voisins de la classe `Grille`.
+---
 
-#### Intégration des fonctionnalités dans `Cellule`
-Les fonctionnalités nécessaires à la gestion des cellules dans une grille torique (comme le calcul des voisins) ont été intégrées dans la classe `Grille`, rendant la classe `Cellule` générique et adaptable à tous les types de grilles.
+## 7. 📋 Prérequis Techniques
 
-### Suppression de la classe `ConfigurationSimulation`
-La classe `ConfigurationSimulation`, qui était spécifiquement utilisée pour les cellules toriques, a également été retirée. Avec la simplification apportée à la gestion des cellules et des grilles, cette classe est devenue redondante.
+- 🖥️ **C++17 ou plus récent** : Pour utiliser les fonctionnalités modernes du langage.
+- 🎨 **SFML** (version 2.5.1 ou ultérieure) : Pour gérer l'interface graphique.
 
-#### Impact de cette suppression
-- La configuration initiale de la grille est désormais directement gérée par la classe `Grille` via des fichiers de configuration ou des paramètres passés au programme.
-- Cela permet de réduire le nombre de dépendances entre les classes et de rendre le code plus lisible et plus facile à maintenir.
+---
 
-Ces modifications reflètent une démarche de simplification de l'architecture, visant à réduire la complexité inutile tout en conservant les fonctionnalités clés nécessaires à la simulation.
+## 8. 💻 Installation et Exécution
 
-### Grille Torique
-
-L'extension de la grille torique ajoute une fonctionnalité clé au projet en supprimant les limites traditionnelles de la grille rectangulaire.
-
-#### Description
-
-Dans une grille classique, les cellules situées aux bords n'ont pas de voisins de l'autre côté. Cependant, dans une grille torique :
-
-- **Les bords gauche et droit de la grille sont connectés** : Une cellule située à l'extrémité gauche considère les cellules de l'extrémité droite comme ses voisines.
-- **Les bords supérieur et inférieur sont également connectés** : Une cellule en haut de la grille peut interagir avec les cellules situées tout en bas.
-
-Ce mécanisme permet d'observer des comportements nouveaux et dynamiques :
-
-1. **Propagation infinie des motifs** : Les motifs qui atteignent un bord continuent de l'autre côté de la grille.
-2. **Équilibre naturel des motifs** : Les motifs ne sont pas arrêtés par des "murs invisibles", ce qui donne lieu à des interactions plus naturelles.
-
-#### Avantages
-
-- **Amélioration des simulations** : Permet de modéliser des environnements sans frontières, tels que les systèmes planétaires ou biologiques.
-- **Complexité accrue** : Enrichit les possibilités de configurations et de motifs observables.
-
-#### Implémentation Technique
-
-- L'algorithme calcule les voisins de chaque cellule en utilisant des **opérations modulo** sur les coordonnées de la grille :
-  ```cpp
-  int voisinX = (x + décalageX + largeur) % largeur;
-  int voisinY = (y + décalageY + hauteur) % hauteur;
-  ```
-- Cela assure que les indices "tournent" au-delà des limites de la grille.
-
-## 7. Prérequis Techniques
-
-- **C++17 ou plus récent** : Pour utiliser les fonctionnalités modernes du langage.
-- **SFML** (version 2.5.1 ou ultérieure) : Pour gérer l'interface graphique.
-- Un compilateur compatible comme **GCC**, **Clang**, ou **MSVC**.
-
-## 8. Installation et Exécution
-
-### Étapes d'installation
-
-1. Clonez le dépôt :
+1. 📥 Clonez le dépôt :
    ```bash
    git clone https://github.com/votre-nom-utilisateur/jeu-de-la-vie.git
    ```
-2. Accédez au dossier :
-   ```bash
-   cd jeu-de-la-vie
-   ```
-3. Compilez le projet :
+2. ⚙️ Compilez le projet :
    ```bash
    g++ -std=c++17 -I include -o jeu main.cpp -lsfml-graphics -lsfml-window -lsfml-system
    ```
+3. ▶️ Exécutez le programme :
+   ```bash
+   ./jeu
+   ```
 
-### Configuration initiale
+---
 
-Préparez un fichier décrivant l'état initial de la grille, par exemple :
+## 9. 🕹️ Utilisation
 
-```
-5 5
-0 0 0 0 0
-0 1 1 1 0
-0 0 0 0 0
-0 0 0 0 0
-0 0 0 0 0
-```
+Pour exécuter le programme, nous utilisons le **débogueur Windows local** intégré à l’environnement de développement. Une fois le programme lancé, un menu interactif s’affiche, offrant les options suivantes :
 
-Exécutez ensuite le programme en fournissant ce fichier comme argument.
+1. **Mode Console** :
+   - Permet une simulation légère affichée directement dans la console.
+   - L’utilisateur peut charger une configuration initiale ou suivre les itérations successives en texte.
 
-## 9. Utilisation
+2. **Mode Graphique** :
+   - Offre une visualisation en temps réel des évolutions sur la grille.
+   - Les utilisateurs peuvent interagir avec la simulation en ajoutant, supprimant ou modifiant des cellules directement via la souris ou le clavier.
 
-### Mode console
+### Instructions :
+- Lancez le débogueur Windows local pour démarrer le programme.
+- Choisissez le mode souhaité dans le menu interactif.
+- Suivez les instructions affichées à l’écran pour configurer la simulation et interagir avec la grille.
 
-- Lancez la simulation avec :
-  ```bash
-  ./jeu --console config.txt
-  ```
-- Les états successifs sont sauvegardés dans des fichiers de sortie.
+---
 
-### Mode graphique
+## 10. 🧪 Tests Unitaires
+![Capture d'écran 2024-12-07 224714](https://github.com/user-attachments/assets/be9175c4-ad2f-4962-89de-5fa2fbd962c6)
 
-- Lancez la simulation graphique avec :
-  ```bash
-  ./jeu --gui config.txt
-  ```
-- Utilisez la souris ou le clavier pour interagir avec la grille.
+Nous avons implémenté des tests unitaires pour garantir la fiabilité et la robustesse des fonctionnalités principales du projet. Ces tests ont été réalisés avec **Microsoft Visual Studio C++ Unit Testing Framework**. Voici un résumé des tests effectués :
 
-## 10. Objectifs Pédagogiques
+1. **Test d'initialisation de la grille** : Vérification que la grille est correctement créée avec les dimensions spécifiées et que toutes les cellules sont initialisées comme mortes.
+2. **Test des itérations** : Simulation d'une grille de 3x3 avec un motif initial et vérification que les cellules évoluent correctement selon les règles du jeu.
+3. **Test d'un motif stable (bloc)** : Vérification que le motif 2x2 reste inchangé après plusieurs itérations, confirmant son caractère stable.
+
+Tous les tests ont été exécutés avec succès, confirmant que les fonctionnalités principales fonctionnent comme prévu.
+
+---
+
+## 11. 🎓 Objectifs Pédagogiques
 
 Ce projet vise à :
 
-1. Illustrer les principes de la programmation orientée objet.
-2. Montrer comment structurer un projet avec une architecture modulaire.
-3. Utiliser des bibliothèques externes comme **SFML** pour enrichir une application.
-4. Apprendre à gérer des états complexes et des itérations successives.
+- 🛠️ Illustrer les principes de la programmation orientée objet.
+- 🏗️ Montrer comment structurer un projet avec une architecture modulaire.
+- 🎨 Utiliser des bibliothèques externes comme **SFML** pour enrichir une application.
+- 🔄 Apprendre à gérer des états complexes et des itérations successives.
 
-## 11. Conclusion
+---
+
+## 12. 🌟 Conclusion
 
 Le projet "Jeu de la Vie" démontre comment des règles simples peuvent conduire à des comportements complexes et imprévisibles. L'architecture modulaire permet d'ajouter des extensions futures, comme :
 
-- La parallélisation des calculs.
-- L'ajout de motifs préprogrammés (oscillateurs, vaisseaux).
-- Une interface utilisateur plus avancée.
+- ⚡ La parallélisation des calculs.
+- 🖼️ Une interface utilisateur plus avancée.
 
 Ce travail constitue une base solide pour explorer des concepts avancés en programmation et simulation.
 
-
-
+🌸 Merci pour votre lecture et bonne exploration du "Jeu de la Vie" ! 🌸
 
