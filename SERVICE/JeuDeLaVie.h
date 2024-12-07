@@ -1,9 +1,9 @@
 #ifndef JEUDELAVIE_H
 #define JEUDELAVIE_H
 
-#include "C:\Users\DELL VOSTRO\source\repos\Jeu-de-la-vie-GROUPE18\COMPOSANTS\Grille.h"
-#include "C:\Users\DELL VOSTRO\source\repos\Jeu-de-la-vie-GROUPE18\IHM\Afficheur.h"
-#include "C:\Users\DELL VOSTRO\source\repos\Jeu-de-la-vie-GROUPE18\IHM\AfficheurGraphique.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS\Grille.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\IHM\Afficheur.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\IHM\AfficheurGraphique.h"
 
 class JeuDeLaVie {
 private:

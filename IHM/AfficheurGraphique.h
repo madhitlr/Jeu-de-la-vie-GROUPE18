@@ -1,7 +1,7 @@
 #ifndef AFFICHEURGRAPHIQUE_H
 #define AFFICHEURGRAPHIQUE_H
 
-#include "C:\Users\DELL VOSTRO\source\repos\Jeu-de-la-vie-GROUPE18\IHM\Afficheur.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\IHM\Afficheur.h"
 #include <SFML/Graphics.hpp>
 
 class AfficheurGraphique : public Afficheur {

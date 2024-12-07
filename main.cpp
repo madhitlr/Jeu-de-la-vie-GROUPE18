@@ -126,7 +126,7 @@ int main() {
     chargerScores();
    
     sf::Music musique;
-    if (!musique.openFromFile("C:\\Users\\DELL VOSTRO\\Desktop\\meow.ogg")) {
+    if (!musique.openFromFile("C:\\Users\\PC-PHONE\\Desktop\\miaw\\audio\\meow.ogg")) {
         std::cerr << "Erreur lors du chargement de la musique.\n";
     } 
     else {

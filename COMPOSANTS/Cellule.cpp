@@ -1,4 +1,4 @@
-#include "C:\Users\DELL VOSTRO\source\repos\Jeu-de-la-vie-GROUPE18\COMPOSANTS\Cellule.h"
+#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS\Cellule.h"
 
 Cellule::Cellule(bool etat) : vivante(etat) {}
 Cellule::~Cellule() {}
