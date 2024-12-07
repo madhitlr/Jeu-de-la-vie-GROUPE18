@@ -7,6 +7,7 @@
 class AfficheurGraphique : public Afficheur {
 private:
     sf::RenderWindow window;
+    sf::Font font;
     int tailleCellule;
 
 public:

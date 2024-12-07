@@ -44,8 +44,7 @@ void afficherMenuPrincipal() {
     std::cout << "     JEU DE LA VIE (MENU)    \n";
     std::cout << "=============================\n";
     std::cout << "1. Play\n";
-    std::cout << "2. Test unitaire\n";
-    std::cout << "3. Score\n";
+    std::cout << "2. Score\n";
     std::cout << "0. Quitter\n";
     std::cout << "Choix: ";
 }
@@ -66,7 +65,16 @@ void afficherMenuGraphique() {
     std::cout << "Choix: ";
 }
 
-// Fonction pour éditer la grille de manière interactive avec WASD
+void afficherMenuFichiers() {
+    std::cout << "----- CHOIX DU MOTIF -----\n";
+    std::cout << "1. Oscillateur (oscillateur.txt)\n";
+    std::cout << "2. Vaisseau (glider.txt)\n";
+    std::cout << "3. Structure statique (bloc.txt)\n";
+    std::cout << "4. Charger le fichier par defaut (Grille.txt)\n";
+    std::cout << "0. Retour\n";
+    std::cout << "Choix: ";
+}
+
 std::vector<std::vector<std::shared_ptr<Cellule>>> editerGrilleInteractif(int largeur, int hauteur) {
     std::vector<std::vector<std::shared_ptr<Cellule>>> grille(hauteur, std::vector<std::shared_ptr<Cellule>>(largeur));
     for (int y = 0; y < hauteur; ++y) {
@@ -124,14 +132,14 @@ std::vector<std::vector<std::shared_ptr<Cellule>>> editerGrilleInteractif(int la
 
 int main() {
     chargerScores();
-   
+
     sf::Music musique;
     if (!musique.openFromFile("C:\\Users\\PC-PHONE\\Desktop\\miaw\\audio\\meow.ogg")) {
         std::cerr << "Erreur lors du chargement de la musique.\n";
-    } 
+    }
     else {
         musique.setLoop(true);
-        musique.setVolume(50.f); // Ajuster le volume si besoin 
+        musique.setVolume(50.f);
         musique.play();
     }
 
@@ -141,7 +149,7 @@ int main() {
         std::cin >> choix;
 
         if (choix == 0) {
-            break;
+            break; // Quitter
         }
         else if (choix == 1) {
             afficherMenuPlay();
@@ -149,12 +157,28 @@ int main() {
             std::cin >> choixPlay;
 
             if (choixPlay == 1) {
-                // Mode Console
-                int largeur = 20, hauteur = 20, maxIterations;
-                std::string cheminFichier;
-                std::cout << "Entrez le chemin du fichier: ";
-                std::cin >> cheminFichier;
+                afficherMenuFichiers();
+                int choixFichier;
+                std::cin >> choixFichier;
 
+                std::string cheminFichier;
+                if (choixFichier == 1) {
+                    cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\oscillateur.txt";
+                }
+                else if (choixFichier == 2) {
+                    cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\glider.txt";
+                }
+                else if (choixFichier == 3) {
+                    cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\bloc.txt";
+                }
+                else if (choixFichier == 4) {
+                    cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\etat_initial.txt";
+                }
+                else {
+                    continue; // Retour
+                }
+
+                int largeur = 20, hauteur = 20, maxIterations;
                 std::cout << "Entrez le nombre d'iterations: ";
                 std::cin >> maxIterations;
 
@@ -173,7 +197,6 @@ int main() {
 
             }
             else if (choixPlay == 2) {
-                // Mode Graphique
                 afficherMenuGraphique();
                 int choixGraph;
                 std::cin >> choixGraph;
@@ -188,19 +211,35 @@ int main() {
                 JeuDeLaVie jeu(largeur, hauteur, maxIterations);
 
                 if (choixGraph == 1) {
-                    // Charger depuis un fichier
+                    afficherMenuFichiers();
+                    int choixFichier;
+                    std::cin >> choixFichier;
+
                     std::string cheminFichier;
-                    std::cout << "Entrez le chemin du fichier: ";
-                    std::cin >> cheminFichier;
+                    if (choixFichier == 1) {
+                        cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\oscillateur.txt";
+                    }
+                    else if (choixFichier == 2) {
+                        cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\glider.txt";
+                    }
+                    else if (choixFichier == 3) {
+                        cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\bloc.txt";
+                    }
+                    else if (choixFichier == 4) {
+                        cheminFichier = "C:\\Users\\PC-PHONE\\Desktop\\miaw\\etat_initial.txt";
+                    }
+                    else {
+                        continue; // Retour
+                    }
+
                     jeu.chargerFichierConfiguration(cheminFichier);
                 }
                 else if (choixGraph == 2) {
-                    // Grille interactive WASD
                     auto nouvelleGrille = editerGrilleInteractif(largeur, hauteur);
                     jeu.setGrille(nouvelleGrille);
                 }
                 else {
-                    continue; // retour
+                    continue; // Retour
                 }
 
                 AfficheurGraphique afficheurGraphique(25, largeur, hauteur);
@@ -210,15 +249,9 @@ int main() {
                 scores.push_back(score);
                 sauvegarderScores();
             }
-
         }
+
         else if (choix == 2) {
-
-            std::cout << "Tests unitaires en cours de developpement...\n";
-
-        }
-        else if (choix == 3) {
-            // Afficher les scores
             afficherScores();
         }
     }
