@@ -13,18 +13,18 @@ sf::RenderWindow& AfficheurGraphique::getWindow() {
 
 void AfficheurGraphique::afficher(const Grille& grille, int iteration) {
     window.clear();
-    sf::RectangleShape Cellule(sf::Vector2f(tailleCellule - 1, tailleCellule - 1));
+    sf::RectangleShape cellule(sf::Vector2f(tailleCellule - 1, tailleCellule - 1));
 
     for (int y = 0; y < grille.getHauteur(); ++y) {
         for (int x = 0; x < grille.getLargeur(); ++x) {
             if (grille.estVivante(x, y)) {
-                Cellule.setFillColor(sf::Color::Magenta);
+                cellule.setFillColor(sf::Color::Green);
             }
             else {
-                Cellule.setFillColor(sf::Color::Black);
+                cellule.setFillColor(sf::Color::Black);
             }
-            Cellule.setPosition(x * tailleCellule, y * tailleCellule);
-            window.draw(Cellule);
+            cellule.setPosition(x * tailleCellule, y * tailleCellule);
+            window.draw(cellule);
         }
     }
     window.display();

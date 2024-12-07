@@ -59,5 +59,13 @@
     <ClInclude Include="SERVICE\JeuDeLaVie.h">
       <Filter>SERVICE</Filter>
     </ClInclude>
+    <ClInclude Include="COMPOSANTS\Cellule.h">
+      <Filter>COMPOSANTS</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="meow.ogg">
+      <Filter>Fichiers sources</Filter>
+    </None>
   </ItemGroup>
 </Project>

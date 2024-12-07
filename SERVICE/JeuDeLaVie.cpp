@@ -43,3 +43,17 @@ void JeuDeLaVie::lancerSimulationGraphique(AfficheurGraphique& afficheur) {
         }
     }
 }
+
+void JeuDeLaVie::setGrille(const std::vector<std::vector<std::shared_ptr<Cellule>>>& nouvelleGrille) {
+    grille.changerGrille(nouvelleGrille);
+}
+
+int JeuDeLaVie::calculerScore() const {
+    int vivantes = 0;
+    for (int y = 0; y < grille.getHauteur(); ++y) {
+        for (int x = 0; x < grille.getLargeur(); ++x) {
+            if (grille.estVivante(x, y)) vivantes++;
+        }
+    }
+    return vivantes;
+}

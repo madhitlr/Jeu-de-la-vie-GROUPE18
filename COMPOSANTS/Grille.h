@@ -1,7 +1,7 @@
 #ifndef GRILLE_H
 #define GRILLE_H
 
-#include "C:\Users\PC-PHONE\Desktop\miaw\COMPOSANTS/Cellule.h"
+#include "C:\Users\DELL VOSTRO\source\repos\Jeu-de-la-vie-GROUPE18\COMPOSANTS\Cellule.h"
 #include <vector>
 #include <string>
 #include <memory>
@@ -16,6 +16,8 @@ public:
     Grille(int largeur, int hauteur);
     void initialiserDepuisFichier(const std::string& cheminFichier);
     void actualiserEtat();
+    void changerGrille(const std::vector<std::vector<std::shared_ptr<Cellule>>>& nouvelle);
+
 
     int getLargeur() const;
     int getHauteur() const;
