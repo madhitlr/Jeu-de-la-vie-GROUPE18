@@ -166,6 +166,7 @@ Pour exécuter le programme, nous utilisons le **débogueur Windows local** int�
 ---
 
 ## 10. 🧪 Tests Unitaires
+![Capture d'écran 2024-12-07 224714](https://github.com/user-attachments/assets/be9175c4-ad2f-4962-89de-5fa2fbd962c6)
 
 Nous avons implémenté des tests unitaires pour garantir la fiabilité et la robustesse des fonctionnalités principales du projet. Ces tests ont été réalisés avec **Microsoft Visual Studio C++ Unit Testing Framework**. Voici un résumé des tests effectués :
 
