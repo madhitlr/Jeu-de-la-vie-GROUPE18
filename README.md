@@ -5,7 +5,7 @@
 1. [✨ Introduction](#introduction)
 2. [📜 Règles du Jeu de la Vie](#règles-du-jeu-de-la-vie)
 3. [🏗️ Architecture du projet](#architecture-du-projet)
-4. [📊 Evolution du Diagramme de classe](#evolution-du-diagramme-de-classe)
+4. [📊 Diagramme UML](#diagramme-uml)
 5. [🎮 Fonctionnalités](#fonctionnalités)
 6. [🔧 Extensions Implémentées](#extensions-implémentées)
 7. [📋 Prérequis Techniques](#prérequis-techniques)
@@ -20,15 +20,13 @@
 ## 1. ✨ Introduction
 
 Le **Jeu de la Vie de Conway** est un automate cellulaire fascinant qui illustre comment des règles simples peuvent produire des comportements complexes. Créé en 1970, il s'agit d'un modèle en grille où chaque cellule, vivante ou morte, évolue selon des règles précises basées sur ses voisins. Ce jeu est devenu un outil pédagogique et scientifique majeur pour explorer des concepts liés à la biologie, aux mathématiques et à l'informatique.
-<div align="center">
-  <img src="https://media.giphy.com/media/d7SnByEMkrdeoVQ2lT/giphy.gif" alt="Aperçu du Jeu de la Vie" />
-</div>
-Dans ce projet, nous avons recréé cette simulation en utilisant les principes de la **programmation orientée objet (POO) en C++**. Avec une architecture modulaire et robuste, nous avons intégré deux modes d'exécution :
 
-- 🖼️ Un mode graphique réalisé avec **SFML** pour une visualisation interactive.
-- 🖥️ Un mode console permettant une gestion plus légère et scriptable.
+Dans ce projet, nous avons recréé cette simulation en utilisant les principes de la **programmation orientée objet (POO)** en C++. Avec une architecture modulaire et robuste, nous avons intégré deux modes d'exécution :
 
-Ce projet a pour but d'intégrer des principes logiciels robustes, une structure modulaire, et d'explorer des extensions avancées du concept original.
+- 🖼️ **Mode graphique** : Offrant une visualisation interactive avec la bibliothèque **SFML**.
+- 🖥️ **Mode console** : Fournissant une approche légère et textuelle pour simuler les états successifs.
+
+Ce projet va au-delà de la simple reproduction du concept en explorant des extensions avancées comme la grille torique et l'ajout de motifs prédéfinis. En combinant rigueur technique et créativité, cette simulation est une invitation à découvrir les merveilles des systèmes dynamiques.
 
 ---
 
@@ -82,13 +80,22 @@ L'architecture du projet est divisée en trois couches principales, permettant u
 ---
 
 ## 4. 📊 Évolution du Diagramme de Classe du Projet
-![image](https://github.com/user-attachments/assets/45a8ee12-0944-4682-83d8-1d65332a254f)
+![image](https://github.com/user-attachments/assets/ab7979ff-d390-49da-83ae-9326ce62ed80)
 
 Dans l’ancien diagramme, la gestion des cellules toriques était assurée par une classe dérivée spécifique, `CelluleTorique`. Cependant, cette approche rendait la structure plus complexe et introduisait des redondances inutiles. Dans le nouveau diagramme, le comportement torique a été intégré directement dans la classe de base `Cellule`. Ainsi, toutes les cellules adoptent un comportement torique par défaut. Cette simplification permet de réduire les responsabilités redondantes et de faciliter la gestion de la logique du jeu.
 
 La structure des couches a également été repensée pour offrir une architecture plus claire et modulaire.
 
 ---
+
+## 🎬 Aperçu du Jeu de la Vie
+
+Voici un exemple visuel montrant une simulation dynamique du **Jeu de la Vie** :
+
+<div align="center">
+  <img src="https://media.giphy.com/media/d7SnByEMkrdeoVQ2lT/giphy.gif" alt="Aperçu du Jeu de la Vie" />
+</div>
+
 
 ## 5. 🎮 Fonctionnalités
 
@@ -101,11 +108,11 @@ La structure des couches a également été repensée pour offrir une architectu
 
 ## 6. 🔧 Extensions Implémentées
 
-### **🏗️ Placement de constructions pré-programmées sur la grille**
+**🏗️ Placement de constructions pré-programmées sur la grille**
 
 L’utilisateur peut sélectionner et insérer des motifs prédéfinis directement dans la grille pour démarrer la simulation avec des configurations intéressantes. Ces motifs incluent des oscillateurs, des vaisseaux et des structures statiques. Cette fonctionnalité est idéale pour explorer des scénarios complexes sans configurer manuellement chaque cellule, ce qui rend l’expérimentation plus rapide et plus accessible.
 
-### 🎹 Intégration de nouveaux motifs via le clavier
+🎹 Intégration de nouveaux motifs via le clavier
 
 Pendant l’exécution de la simulation, l’utilisateur peut interagir avec la grille en ajoutant de nouveaux motifs à l’aide des touches du clavier. Cela enrichit l’expérience interactive et permet de tester l’impact de nouveaux éléments en temps réel.
 
@@ -119,7 +126,6 @@ La gestion torique connecte les bords de la grille pour permettre des motifs con
 
 - 🖥️ **C++17 ou plus récent** : Pour utiliser les fonctionnalités modernes du langage.
 - 🎨 **SFML** (version 2.5.1 ou ultérieure) : Pour gérer l'interface graphique.
-- 💻 **Outil de collaboration** : Git et Github.
 
 ---
 
@@ -127,7 +133,7 @@ La gestion torique connecte les bords de la grille pour permettre des motifs con
 
 1. 📥 Clonez le dépôt :
    ```bash
-   git clone https://github.com/madhitlr/jeu-de-la-vie-GROUPE18.git
+   git clone https://github.com/votre-nom-utilisateur/jeu-de-la-vie.git
    ```
 2. ⚙️ Compilez le projet :
    ```bash
@@ -142,26 +148,24 @@ La gestion torique connecte les bords de la grille pour permettre des motifs con
 
 ## 9. 🕹️ Utilisation
 
-### Mode console
+Pour exécuter le programme, nous utilisons le **débogueur Windows local** intégré à l’environnement de développement. Une fois le programme lancé, un menu interactif s’affiche, offrant les options suivantes :
 
-- Lancez la simulation avec :
-  ```bash
-  ./jeu --console etat_initial.txt
-  ```
-- Les états successifs sont sauvegardés dans des fichiers de sortie.
+1. **Mode Console** :
+   - Permet une simulation légère affichée directement dans la console.
+   - L’utilisateur peut charger une configuration initiale ou suivre les itérations successives en texte.
 
-### Mode graphique
+2. **Mode Graphique** :
+   - Offre une visualisation en temps réel des évolutions sur la grille.
+   - Les utilisateurs peuvent interagir avec la simulation en ajoutant, supprimant ou modifiant des cellules directement via la souris ou le clavier.
 
-- Lancez la simulation graphique avec :
-  ```bash
-  ./jeu --gui etat_initial.txt
-  ```
-- Utilisez la souris ou le clavier pour interagir avec la grille.
+### Instructions :
+- Lancez le débogueur Windows local pour démarrer le programme.
+- Choisissez le mode souhaité dans le menu interactif.
+- Suivez les instructions affichées à l’écran pour configurer la simulation et interagir avec la grille.
 
 ---
 
 ## 10. 🧪 Tests Unitaires
-![image](https://github.com/user-attachments/assets/836cc746-981b-4f5f-b9bc-e02147a07e38)
 
 Nous avons implémenté des tests unitaires pour garantir la fiabilité et la robustesse des fonctionnalités principales du projet. Ces tests ont été réalisés avec **Microsoft Visual Studio C++ Unit Testing Framework**. Voici un résumé des tests effectués :
 
