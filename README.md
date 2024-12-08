@@ -1,5 +1,10 @@
 # 🌸 Projet : Le Jeu de la Vie 🌸
 
+-REZKI Nourhane Madeleine
+
+-HADJ SADOK Aya
+
+
 ## 📚 Table des matières
 
 1. [✨ Introduction](#introduction)
